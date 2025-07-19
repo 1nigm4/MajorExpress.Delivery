@@ -1,0 +1,43 @@
+﻿services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: MajorExpress
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  migrations:
+    build:
+      context: .
+      dockerfile: Dockerfile.migrations
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - ConnectionStrings__Postgres=Host=postgres;Port=5432;Database=MajorExpress;Username=postgres;Password=postgres
+      - EF_IGNORE_PENDING_MODEL_CHANGES=true
+
+  webapi:
+    build:
+      context: .
+      dockerfile: MajorExpress.Delivery.Api/Dockerfile
+    depends_on:
+      - postgres
+      - migrations
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Postgres=Host=postgres;Port=5432;Database=MajorExpress;Username=postgres;Password=postgres
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:

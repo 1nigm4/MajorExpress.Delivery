@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="MajorExpress.Delivery.Api.Client.DesktopApp.Components.Editor.EntityEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:MajorExpress.Delivery.Api.Client.DesktopApp.ViewModels.Editor"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DataContext="{d:DesignInstance Type=vm:EntityEditorViewModel, IsDesignTimeCreatable=True}"
+             mc:Ignorable="d" 
+             x:Name="Root"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="{StaticResource SecondaryColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Border Padding="10" Margin="10" BorderThickness="1" BorderBrush="{StaticResource BorderColor}">
+            <ContentControl Content="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataView}" />
+        </Border>
+
+        <Border Grid.Row="1" BorderThickness="0 1 0 0" BorderBrush="{StaticResource BorderColor}" Background="{StaticResource AccentColor}" Padding="10">
+            <Grid>
+                <ContentControl Content="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=BottomPanel}" HorizontalAlignment="Left" />
+
+                <Border CornerRadius="8" HorizontalAlignment="Right" Background="#FF2563EB" >
+                    <Button Content="Сохранить" Command="{Binding SaveOrderCommand}" Foreground="{StaticResource AccentColor}" Background="Transparent" BorderThickness="0" Padding="20 4" />
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="MajorExpress.Delivery.Api.Client.DesktopApp.Components.Editor.ClientEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:MajorExpress.Delivery.Api.Client.DesktopApp.ViewModels.Editor"
+             xmlns:fields="clr-namespace:MajorExpress.Delivery.Api.Client.DesktopApp.Components.Fields"
+             xmlns:registry="clr-namespace:MajorExpress.Delivery.Api.Client.DesktopApp.Components.Registry"
+             xmlns:app="clr-namespace:MajorExpress.Delivery.Api.Client.DesktopApp"
+             xmlns:local="clr-namespace:MajorExpress.Delivery.Api.Client.DesktopApp.Components.Editor"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=vm:ClientEditorViewModel, IsDesignTimeCreatable=True}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <local:EntityEditor>
+        <local:EntityEditor.DataView>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <fields:RegistryField LabelText="Пользователь" Registry="{app:Service Type=registry:UserRegistry}" DisplayValue="{Binding Model.User.FIO}" ModelValue="{Binding Model.User, Mode=TwoWay}" />
+                </StackPanel>
+            </Grid>
+        </local:EntityEditor.DataView>
+    </local:EntityEditor>
+</UserControl>

@@ -1,0 +1,33 @@
+﻿<Window x:Class="MajorExpress.Delivery.Api.Client.DesktopApp.Views.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MajorExpress.Delivery.Api.Client.DesktopApp"
+        xmlns:component="clr-namespace:MajorExpress.Delivery.Api.Client.DesktopApp.Components"
+        xmlns:registry="clr-namespace:MajorExpress.Delivery.Api.Client.DesktopApp.Components.Registry"
+        xmlns:fields="clr-namespace:MajorExpress.Delivery.Api.Client.DesktopApp.Components.Fields"
+        xmlns:vm="clr-namespace:MajorExpress.Delivery.Api.Client.DesktopApp.ViewModels.Registry"
+        mc:Ignorable="d"
+        Title="MajorExpress" Height="600" Width="800">
+    <Grid Background="{StaticResource SecondaryColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource BorderColor}" Background="{StaticResource AccentColor}">
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <component:Logo HorizontalAlignment="Left" />
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="10">
+            <StackPanel>
+                <fields:SearchField VerticalAlignment="Top" Text="{Binding ElementName=OrdersRegistry, Path=DataContext.Filter, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+            </StackPanel>
+
+            <registry:OrderRegistry x:Name="OrdersRegistry" d:DataContext="{d:DesignInstance vm:OrderRegistryViewModel, IsDesignTimeCreatable=True}" DataContext="{local:Service Type=vm:OrderRegistryViewModel}" Margin="0 40 0 0" />
+        </Grid>
+    </Grid>
+</Window>

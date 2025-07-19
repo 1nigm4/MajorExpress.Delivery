@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="MajorExpress.Delivery.Api.Client.DesktopApp.Components.Editor.UserEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:MajorExpress.Delivery.Api.Client.DesktopApp.ViewModels.Editor"
+             xmlns:fields="clr-namespace:MajorExpress.Delivery.Api.Client.DesktopApp.Components.Fields"
+             xmlns:local="clr-namespace:MajorExpress.Delivery.Api.Client.DesktopApp.Components.Editor"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=vm:UserEditorViewModel, IsDesignTimeCreatable=True}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <local:EntityEditor>
+        <local:EntityEditor.DataView>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <fields:TextField LabelText="Фамилия" Text="{Binding Model.LastName}" />
+                    <fields:TextField LabelText="Имя" Text="{Binding Model.FirstName}" Margin="0 10" />
+                    <fields:TextField LabelText="Отчество" Text="{Binding Model.Patronymic}" />
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <fields:TextField LabelText="Номер телефона" Text="{Binding Model.PhoneNumber}" />
+                </StackPanel>
+            </Grid>
+        </local:EntityEditor.DataView>
+    </local:EntityEditor>
+</UserControl>

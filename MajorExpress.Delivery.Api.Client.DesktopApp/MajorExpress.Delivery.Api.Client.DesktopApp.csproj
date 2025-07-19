@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Assets\cargo.svg" />
+    <None Remove="Resources\Assets\geo.svg" />
+    <None Remove="Resources\Assets\person.svg" />
+    <None Remove="Resources\Assets\phone.svg" />
+    <None Remove="Resources\Assets\search.svg" />
+    <None Remove="Resources\Assets\size.svg" />
+    <None Remove="Resources\Assets\time.svg" />
+    <None Remove="Resources\Assets\wheight.svg" />
+    <None Remove="Resources\logo.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetProjects.SVGImage" Version="5.2.3" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.7.25104.5739" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.7" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MajorExpress.Delivery.Api.Client\MajorExpress.Delivery.Api.Client.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Assets\cargo.svg" />
+    <Resource Include="Resources\Assets\geo.svg" />
+    <Resource Include="Resources\Assets\person.svg" />
+    <Resource Include="Resources\Assets\phone.svg" />
+    <Resource Include="Resources\Assets\search.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Assets\size.svg" />
+    <Resource Include="Resources\Assets\time.svg" />
+    <Resource Include="Resources\Assets\wheight.svg" />
+    <Resource Include="Resources\logo.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Components\Editor\CourierEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Components\Editor\ClientEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Components\Registry\CourierRegistry.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Components\Registry\ClientRegistry.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>
